@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>775</x>
+      <y>375</y>
+      <w>110</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>Viaje
+--
+- pasajero: Pasajero[]
+- conductor: Conductor
+- idViaje: int
+- vehiculoEnUso: Automovil
+- pagoConTarjeta: boolean
+- paradaInicial: Coordenadas
+- paradasIntermedias: []
+- paradaFinal: Coordenadas
+- recorrido: float
+- estado: String
+- tarifa: Tarifa
+- calificacionDePasajero: void
+- calificacionDeConductor: void
+--
++ Viaje()
++ calcularRecorrido: float
++ getCalificacionPasajero(): void
++ getCalificacionConductor(): void
++ añadirSaldo(): void
++ añadirDineroRetenido(): void
++ pagoMultiple(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>565</x>
+      <y>340</y>
+      <w>110</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Conductor
+--
+- idConductor: String
+- nombre: String
+- listaDeAutomoviles: []
+- automovilEnUso: Automovil
+- ubicacionActual: Coordenadas
+- listaDeViajes: []
+- listaDeReclamos: []
+- calificacion: float
+- bonificacionPorActividad: float
+- saldo: float
+- dineroRetenido: float
+--
++ aceptarViaje(): void
++ terminarViaje(): void
++ darCalificacion(): void
++ darNombre(): void
++ calcularCalificacion(): void
++ cambiarBono(): void
++ cambiarDineroRetenido(): void
++ sacarSaldo(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>350</y>
+      <w>105</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>Automovil
+--
+- categoria: []
+- placas: String
+- marca: String
+- modelo: String
+- color: String
+--
++ getCategoria(): byte
++ getInformacion(): []</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>775</x>
+      <y>620</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Tarifa
+--
+- valor: float
+- automovil: Automovil
+- ciudad: Ciudad
+--
++ calcularTarifa(): float</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>980</x>
+      <y>245</y>
+      <w>140</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Pasajero
+--
+- idPasajero: String
+- nombre: String
+- calificacion: float
+- listaDeViajes: []
+- reclamosHechos: []
+- ubicacionActual: Coordenadas
+- viajeActual: Viaje
+--
++ Pasajero(String nombre, float calificacion)
++ iniciarViaje(): void
++ darCalificacion(): void
++ hacerReclamo(): void
++ calcularCalificacion(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>980</x>
+      <y>460</y>
+      <w>170</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>Reclamo
+--
+- tipoDeReclamo: String
+- comentarios: String
+- conductor: Conductor
+- pasajero: Pasajero
+--
++ Reclamo(String tipoReclamo, String comentarios, 
+                  Conductor conductor, Pasajero pasajero)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>210</y>
+      <w>110</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Usuario_Admin
+--
+- condicionTrafico: String
+- demanda: byte
+--
++ actualizarTrafico(): void
++ actualizarDemanda(): void
++ revisarReclamos(): void
++ cambiarBono(): void
++ cambiarDineroRetenido(): void
++ suspenderUsuario(Usuario):void
++ registrarConductor(conductor):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>345</y>
+      <w>130</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;150.0;240.0;150.0;240.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>415</y>
+      <w>115</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>210.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>845</x>
+      <y>565</y>
+      <w>15</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>355</x>
+      <y>610</y>
+      <w>175</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>Ciudad
+--
+- Pais: String
+- nombreCiudad: String
+- condicionTrafico: String
+- demanda: byte
+--
++ Ciudad(String nombre, String trafico, byte demanda)
++ getCondicionTrafico(): byte
++ getDemanda(): byte
++ actualizarTrafico(): void
++ actualizarDemanda(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>370</y>
+      <w>85</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>650</y>
+      <w>260</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>500.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>365</x>
+      <y>260</y>
+      <w>45</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;700.0;10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1045</x>
+      <y>345</y>
+      <w>15</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1030</x>
+      <y>345</y>
+      <w>15</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;230.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>775</x>
+      <y>255</y>
+      <w>110</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>Coordenadas
+--
+- latitud: float
+- longitud: float
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>285</y>
+      <w>15</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>505</x>
+      <y>260</y>
+      <w>85</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>150.0;160.0;150.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>505</x>
+      <y>230</y>
+      <w>560</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>1100.0;30.0;1100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>270</y>
+      <w>110</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>260</y>
+      <w>135</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>615</x>
+      <y>495</y>
+      <w>455</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;370.0;890.0;370.0;890.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>865</x>
+      <y>330</y>
+      <w>130</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>240.0;10.0;10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>380</y>
+      <w>115</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>805</x>
+      <y>565</y>
+      <w>15</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>105</y>
+      <w>105</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>Aplicacion
+--
+--
++ main(Strig[] args): void
++ iniciarAplicacion():void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>85</y>
+      <w>185</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Ub*r
+--
+- Usuario_admin: Map&lt;String, Usuario_Adnmin&gt;
+- conductores: Map&lt;String, Conductor&gt;
+- pasajeros: Map&lt;String, Pasajero&gt;
+--
++ Uber():void
++ registrarAdmin():
++ registrarPasajero():
++ iniciarAdmin():
++ iniciarConductor():
++ iniciarPasajero():
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>565</x>
+      <y>95</y>
+      <w>105</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interfase&gt;&gt;
+Usuario 
+--
+--
+- getId(): String
+- getNombre(): String
+- getCalificacion(): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>145</y>
+      <w>15</w>
+      <h>205</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;390.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>115</y>
+      <w>530</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>900.0;370.0;1040.0;370.0;1040.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>120</y>
+      <w>50</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>120</y>
+      <w>15</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>395</x>
+      <y>170</y>
+      <w>70</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;80.0;120.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>495</x>
+      <y>160</y>
+      <w>595</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>1170.0;170.0;1170.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>255</x>
+      <y>150</y>
+      <w>320</w>
+      <h>325</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>620.0;630.0;10.0;630.0;10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>505</x>
+      <y>145</y>
+      <w>105</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>190.0;10.0;190.0;150.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1085</x>
+      <y>235</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.
+Calificacion va de 0-5
+fg=red
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>165</x>
+      <y>615</y>
+      <w>105</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Pais
+--
+ciudades: Ciudad[]
+moneda: String
+idioma: String
+--
++ getCiudad():Ciudad
++ getIdioma(): String
++ getModena(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>265</x>
+      <y>655</y>
+      <w>100</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>720</x>
+      <y>200</y>
+      <w>220</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=.
+Se asume que todo usuario o conductor
+tenga su ubicacion activada.
+fg=red
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>290</x>
+      <y>315</y>
+      <w>200</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=.
+El usuario o conductor 
+debe estar registrado y logueado.
+fg=red
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
